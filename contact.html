@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="color-scheme" content="light dark" />
+  <meta name="theme-color" content="#0b0b12" />
+  <title>Contact — Studio</title>
+
+  <meta name="lead-endpoint" content="" />
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+
+<body>
+  <div class="noise"></div>
+
+  <header class="topbar">
+    <div class="wrap">
+      <nav class="nav">
+        <a class="brand" href="./index.html">
+          <div class="mark"></div>
+          <div>
+            <b>Studio</b>
+            <span>systems • product • growth</span>
+          </div>
+        </a>
+
+        <div class="links">
+          <a class="pill" href="./systems.html">Systems</a>
+          <a class="pill" href="./process.html">Process</a>
+          <a class="pill" href="./intelligence.html">Intelligence</a>
+          <a class="pill" href="./contact.html">Contact</a>
+        </div>
+
+        <div class="actions">
+          <button class="btn" id="themeBtn">Theme</button>
+          <a class="btn primary" href="./contact.html">Start a build</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="hero">
+      <div class="headline reveal">
+        <div class="headlineInner">
+          <div class="kicker">Contact</div>
+          <h1 class="title">Start a serious<br/>conversation.</h1>
+          <p class="subtitle">
+            This form stores real submissions locally and can forward them
+            to your backend when you configure an endpoint.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="sectionHeader reveal">
+        <div>
+          <h2>Project intake</h2>
+          <p>Clear input leads to clean execution.</p>
+        </div>
+      </div>
+
+      <div class="headline reveal">
+        <div class="headlineInner">
+          <form id="leadForm">
+            <div class="grid3" style="grid-template-columns:1fr 1fr 1fr;">
+              <div>
+                <label>Name</label>
+                <input class="btn" style="width:100%;" name="name" required minlength="2" />
+              </div>
+              <div>
+                <label>Email</label>
+                <input class="btn" style="width:100%;" name="email" type="email" required />
+              </div>
+              <div>
+                <label>Company</label>
+                <input class="btn" style="width:100%;" name="company" />
+              </div>
+            </div>
+
+            <div style="margin-top:16px;">
+              <label>Estimated budget (USD)</label>
+              <input class="btn" style="width:100%;" name="budget" type="number" min="0" step="100" />
+            </div>
+
+            <div style="margin-top:16px;">
+              <label>Project brief</label>
+              <textarea class="btn" style="width:100%; min-height:140px;" name="message" required minlength="12"></textarea>
+            </div>
+
+            <div style="margin-top:20px; display:flex; gap:12px;">
+              <button class="btn primary" type="submit">Submit</button>
+              <span style="font-size:12px; color:var(--muted); align-self:center;">
+                Stored locally • Forward-ready
+              </span>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap footerGrid">
+      <div>© Studio — Contact</div>
+      <div class="right">
+        <a class="pill" href="./systems.html">Systems</a>
+        <a class="pill" href="./process.html">Process</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="./app.js"></script>
+</body>
+</html>

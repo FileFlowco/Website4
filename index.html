@@ -4,1549 +4,627 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
   <meta name="color-scheme" content="light dark" />
-  <meta name="theme-color" content="#0b0b12" />
-  <meta name="description" content="Premium websites engineered to scale: performance, design, and real-world delivery." />
-  <title>Studio — Premium Web Systems</title>
-
-  <!-- Optional: set your real endpoint later (no assumption). If present, form will POST there. -->
-  <meta name="lead-endpoint" content="" />
+  <meta name="theme-color" content="#08080a" />
+  <meta name="description" content="FileFlowCo Studio — High-performance digital architecture and strategic engineering for the modern web." />
+  <title>Studio — Architectural Web Systems</title>
 
   <style>
-    :root{
-      --bg0:#06060b;
-      --bg1:#0a0b14;
-      --card: rgba(255,255,255,.06);
-      --card2: rgba(255,255,255,.09);
-      --stroke: rgba(255,255,255,.14);
-      --stroke2: rgba(255,255,255,.22);
-      --text: rgba(255,255,255,.92);
-      --muted: rgba(255,255,255,.68);
-      --muted2: rgba(255,255,255,.52);
-      --shadow: 0 22px 80px rgba(0,0,0,.55);
-      --shadow2: 0 12px 40px rgba(0,0,0,.45);
-      --radius: 22px;
-      --radius2: 16px;
-      --pad: clamp(18px, 2.2vw, 28px);
-      --w: min(1200px, calc(100vw - 40px));
-      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-      --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
-      --serif: ui-serif, "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
-      --ease: cubic-bezier(.2,.9,.2,1);
-      --t: 260ms var(--ease);
-
-      --a1: #7c3aed;
-      --a2: #06b6d4;
-      --a3: #22c55e;
-      --a4: #f97316;
-      --a5: #e11d48;
-    }
-
-    [data-theme="light"]{
-      --bg0:#f7f7fb;
-      --bg1:#ffffff;
-      --card: rgba(0,0,0,.04);
-      --card2: rgba(0,0,0,.06);
-      --stroke: rgba(0,0,0,.10);
-      --stroke2: rgba(0,0,0,.16);
-      --text: rgba(7,7,14,.92);
-      --muted: rgba(7,7,14,.68);
-      --muted2: rgba(7,7,14,.55);
-      --shadow: 0 22px 80px rgba(0,0,0,.12);
-      --shadow2: 0 12px 40px rgba(0,0,0,.10);
-    }
-
-    *{ box-sizing:border-box; }
-    html,body{ height:100%; }
-    body{
-      margin:0;
-      font-family: var(--sans);
-      color: var(--text);
-      background:
-        radial-gradient(1100px 700px at 70% 5%, color-mix(in oklab, var(--a1), transparent 55%) 0%, transparent 60%),
-        radial-gradient(900px 650px at 15% 15%, color-mix(in oklab, var(--a2), transparent 62%) 0%, transparent 60%),
-        radial-gradient(900px 700px at 78% 78%, color-mix(in oklab, var(--a4), transparent 70%) 0%, transparent 55%),
-        linear-gradient(180deg, var(--bg0) 0%, var(--bg1) 100%);
-      overflow-x:hidden;
-    }
-
-    a{ color:inherit; text-decoration:none; }
-    button, input, textarea{ font:inherit; color:inherit; }
-    ::selection{ background: color-mix(in oklab, var(--a2), transparent 55%); }
-
-    .noise{
-      pointer-events:none;
-      position:fixed; inset:0;
-      opacity:.08;
-      mix-blend-mode: overlay;
-      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='170' height='170'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='170' height='170' filter='url(%23n)' opacity='.45'/%3E%3C/svg%3E");
-      background-size:170px 170px;
-      transform: translateZ(0);
-    }
-
-    .wrap{ width: var(--w); margin:0 auto; }
-
-    .topbar{
-      position: sticky; top:0;
-      z-index: 50;
-      backdrop-filter: blur(16px);
-      background: linear-gradient(180deg, color-mix(in oklab, var(--bg1), transparent 40%) 0%, color-mix(in oklab, var(--bg1), transparent 72%) 100%);
-      border-bottom: 1px solid color-mix(in oklab, var(--stroke), transparent 20%);
-    }
-
-    .nav{
-      display:flex; align-items:center; justify-content:space-between;
-      gap: 14px;
-      padding: 14px 0;
-    }
-
-    .brand{
-      display:flex; align-items:center; gap:10px;
-      min-width: 210px;
-    }
-
-    .mark{
-      width: 36px; height: 36px;
-      border-radius: 12px;
-      background:
-        radial-gradient(14px 14px at 28% 35%, rgba(255,255,255,.95) 0%, transparent 68%),
-        radial-gradient(22px 22px at 65% 70%, rgba(255,255,255,.75) 0%, transparent 70%),
-        conic-gradient(from 230deg, var(--a1), var(--a2), var(--a3), var(--a4), var(--a5), var(--a1));
-      box-shadow: 0 10px 30px rgba(0,0,0,.28);
-      position:relative;
-      overflow:hidden;
-    }
-    [data-theme="light"] .mark{ box-shadow: 0 10px 26px rgba(0,0,0,.14); }
-
-    .brand b{
-      letter-spacing:.08em;
-      font-size: 12px;
-      text-transform: uppercase;
-    }
-    .brand span{
-      display:block;
-      font-size: 11px;
-      letter-spacing:.08em;
-      text-transform: uppercase;
-      color: var(--muted2);
-      margin-top: 2px;
-      font-family: var(--mono);
-    }
-
-    .links{
-      display:flex; align-items:center; gap: 10px;
-      flex-wrap:wrap;
-      justify-content:center;
-      padding: 0 10px;
-    }
-
-    .pill{
-      display:inline-flex; align-items:center; gap:10px;
-      padding: 10px 12px;
-      border-radius: 999px;
-      border: 1px solid color-mix(in oklab, var(--stroke), transparent 10%);
-      background: color-mix(in oklab, var(--card), transparent 5%);
-      transition: transform var(--t), background var(--t), border-color var(--t);
-      user-select:none;
-      white-space:nowrap;
-      font-size: 13px;
-      color: var(--muted);
-    }
-    .pill:hover{ transform: translateY(-1px); background: color-mix(in oklab, var(--card2), transparent 0%); border-color: var(--stroke2); color: var(--text); }
-    .pill:active{ transform: translateY(0px) scale(.99); }
-
-    .actions{
-      display:flex; align-items:center; justify-content:flex-end;
-      min-width: 210px;
-      gap:10px;
-    }
-
-    .btn{
-      display:inline-flex; align-items:center; justify-content:center;
-      gap:10px;
-      padding: 11px 14px;
-      border-radius: 999px;
-      border: 1px solid color-mix(in oklab, var(--stroke), transparent 10%);
-      background: color-mix(in oklab, var(--card), transparent 0%);
-      box-shadow: 0 10px 24px rgba(0,0,0,.16);
-      transition: transform var(--t), background var(--t), border-color var(--t), box-shadow var(--t);
-      font-size: 13px;
-      color: var(--text);
-      cursor:pointer;
-      user-select:none;
-      white-space:nowrap;
-    }
-    [data-theme="light"] .btn{ box-shadow: 0 10px 20px rgba(0,0,0,.08); }
-
-    .btn:hover{
-      transform: translateY(-1px);
-      background: color-mix(in oklab, var(--card2), transparent 0%);
-      border-color: var(--stroke2);
-      box-shadow: 0 14px 40px rgba(0,0,0,.24);
-    }
-    .btn:active{ transform: translateY(0px) scale(.99); }
-
-    .btn.primary{
-      border-color: color-mix(in oklab, var(--a2), white 15%);
-      background:
-        radial-gradient(700px 300px at 20% 20%, color-mix(in oklab, var(--a1), transparent 30%) 0%, transparent 55%),
-        radial-gradient(700px 300px at 80% 30%, color-mix(in oklab, var(--a2), transparent 25%) 0%, transparent 55%),
-        linear-gradient(180deg, color-mix(in oklab, var(--a2), black 25%) 0%, color-mix(in oklab, var(--a1), black 22%) 100%);
-      box-shadow: 0 16px 55px rgba(0,0,0,.32);
-    }
-    .btn.primary:hover{ border-color: color-mix(in oklab, var(--a2), white 40%); }
-
-    .icon{
-      width: 16px; height: 16px;
-      display:inline-block;
-      flex:0 0 auto;
-      opacity:.95;
-    }
-
-    .hero{
-      padding: clamp(36px, 6vw, 72px) 0 36px;
-      position:relative;
-    }
-
-    .heroGrid{
-      display:grid;
-      grid-template-columns: 1.15fr .85fr;
-      gap: clamp(18px, 3vw, 28px);
-      align-items: start;
-    }
-
-    .headline{
-      border-radius: calc(var(--radius) + 8px);
-      border: 1px solid color-mix(in oklab, var(--stroke), transparent 10%);
-      background:
-        radial-gradient(1200px 500px at 10% 0%, color-mix(in oklab, var(--a2), transparent 55%) 0%, transparent 60%),
-        radial-gradient(900px 500px at 85% 20%, color-mix(in oklab, var(--a1), transparent 55%) 0%, transparent 60%),
-        linear-gradient(180deg, color-mix(in oklab, var(--card2), transparent 0%) 0%, color-mix(in oklab, var(--card), transparent 0%) 100%);
-      box-shadow: var(--shadow);
-      overflow:hidden;
-      position:relative;
-    }
-
-    .headlineInner{
-      padding: clamp(20px, 3vw, 34px);
-      display:flex; flex-direction:column; gap: 18px;
-    }
-
-    .kicker{
-      display:flex; align-items:center; justify-content:space-between;
-      gap: 14px;
-      color: var(--muted2);
-      font-family: var(--mono);
-      text-transform: uppercase;
-      letter-spacing: .12em;
-      font-size: 11px;
-    }
-
-    .badge{
-      display:inline-flex; align-items:center; gap:8px;
-      padding: 8px 10px;
-      border-radius: 999px;
-      border: 1px solid color-mix(in oklab, var(--stroke), transparent 10%);
-      background: color-mix(in oklab, var(--card), transparent 0%);
-      color: var(--muted);
-    }
-
-    .title{
-      font-family: var(--serif);
-      line-height: .95;
-      letter-spacing: -0.03em;
-      font-size: clamp(42px, 6.1vw, 78px);
-      margin:0;
-    }
-
-    .subtitle{
-      margin:0;
-      color: var(--muted);
-      font-size: clamp(14px, 1.6vw, 18px);
-      line-height: 1.55;
-      max-width: 62ch;
-    }
-
-    .heroCtas{
-      display:flex; flex-wrap:wrap; gap: 10px;
-      align-items:center;
-      margin-top: 6px;
-    }
-
-    .metaRow{
-      display:flex; flex-wrap:wrap; gap: 10px;
-      align-items:center;
-      margin-top: 12px;
-    }
-
-    .chip{
-      display:inline-flex; align-items:center; gap:10px;
-      padding: 10px 12px;
-      border-radius: 999px;
-      border: 1px solid color-mix(in oklab, var(--stroke), transparent 10%);
-      background: color-mix(in oklab, var(--card), transparent 0%);
-      color: var(--muted);
-      font-size: 12px;
-      font-family: var(--mono);
-      white-space:nowrap;
-    }
-
-    .side{
-      display:flex; flex-direction:column; gap: 14px;
-    }
-
-    .panel{
-      border-radius: var(--radius);
-      border: 1px solid color-mix(in oklab, var(--stroke), transparent 10%);
-      background: linear-gradient(180deg, color-mix(in oklab, var(--card2), transparent 0%) 0%, color-mix(in oklab, var(--card), transparent 0%) 100%);
-      box-shadow: var(--shadow2);
-      overflow:hidden;
-    }
-
-    .panelHeader{
-      padding: var(--pad);
-      display:flex; align-items:flex-start; justify-content:space-between;
-      gap: 12px;
-      border-bottom: 1px solid color-mix(in oklab, var(--stroke), transparent 15%);
-    }
-
-    .panelHeader h3{
-      margin:0;
-      font-size: 14px;
-      letter-spacing:.02em;
-    }
-
-    .panelHeader p{
-      margin:6px 0 0;
-      color: var(--muted);
-      font-size: 13px;
-      line-height:1.5;
-      max-width: 44ch;
-    }
-
-    .panelBody{ padding: var(--pad); }
-
-    .bento{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-    }
-
-    .tile{
-      border-radius: 18px;
-      border: 1px solid color-mix(in oklab, var(--stroke), transparent 10%);
-      background: color-mix(in oklab, var(--card), transparent 0%);
-      padding: 14px 14px 12px;
-      position:relative;
-      overflow:hidden;
-      transition: transform var(--t), border-color var(--t), background var(--t);
-      min-height: 110px;
-    }
-    .tile:hover{ transform: translateY(-2px); border-color: var(--stroke2); background: color-mix(in oklab, var(--card2), transparent 0%); }
-    .tile strong{
-      display:block;
-      font-size: 13px;
-      margin-bottom: 6px;
-      letter-spacing:.02em;
-    }
-    .tile span{
-      display:block;
-      color: var(--muted);
-      font-size: 12px;
-      line-height:1.45;
-    }
-
-    .tile .spark{
-      position:absolute; inset:-60px -80px auto auto;
-      width: 180px; height: 180px;
-      background: radial-gradient(circle at 30% 30%, color-mix(in oklab, var(--a2), transparent 20%) 0%, transparent 60%);
-      filter: blur(8px);
-      opacity:.9;
-      transform: rotate(12deg);
-      pointer-events:none;
-    }
-
-    .section{
-      padding: 36px 0;
-    }
-
-    .sectionHeader{
-      display:flex; align-items:flex-end; justify-content:space-between;
-      gap: 16px;
-      margin-bottom: 16px;
-    }
-
-    .sectionHeader h2{
-      margin:0;
-      font-size: 20px;
-      letter-spacing: .01em;
-    }
-
-    .sectionHeader p{
-      margin:0;
-      color: var(--muted);
-      font-size: 13px;
-      line-height: 1.55;
-      max-width: 60ch;
-    }
-
-    .systems{
-      display:grid;
-      grid-template-columns: 1.2fr .8fr;
-      gap: 16px;
-      align-items: start;
-    }
-
-    .stack{
-      display:flex; flex-direction:column; gap: 12px;
-    }
-
-    .card{
-      border-radius: var(--radius);
-      border: 1px solid color-mix(in oklab, var(--stroke), transparent 10%);
-      background: linear-gradient(180deg, color-mix(in oklab, var(--card2), transparent 0%) 0%, color-mix(in oklab, var(--card), transparent 0%) 100%);
-      box-shadow: var(--shadow2);
-      overflow:hidden;
-    }
-
-    .cardPad{ padding: var(--pad); }
-
-    .grid3{
-      display:grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
-    }
-
-    .stat{
-      border-radius: 18px;
-      border: 1px solid color-mix(in oklab, var(--stroke), transparent 10%);
-      background: color-mix(in oklab, var(--card), transparent 0%);
-      padding: 14px 14px 12px;
-      min-height: 108px;
-      position:relative;
-      overflow:hidden;
-    }
-
-    .stat b{
-      display:block;
-      font-size: 22px;
-      letter-spacing: -0.02em;
-      margin-bottom: 4px;
-    }
-    .stat i{
-      display:block;
-      font-style:normal;
-      color: var(--muted);
-      font-size: 12px;
-      line-height:1.45;
-    }
-
-    .stat .grad{
-      position:absolute; inset:auto -20px -30px -20px;
-      height: 90px;
-      background: radial-gradient(120px 80px at 25% 50%, color-mix(in oklab, var(--a1), transparent 50%) 0%, transparent 70%),
-                  radial-gradient(160px 90px at 75% 55%, color-mix(in oklab, var(--a4), transparent 60%) 0%, transparent 70%);
-      filter: blur(8px);
-      opacity:.95;
-      pointer-events:none;
-    }
-
-    .timeline{
-      display:flex; flex-direction:column; gap: 10px;
-    }
-
-    .step{
-      display:flex; gap: 12px;
-      padding: 12px 12px;
-      border-radius: 16px;
-      border: 1px solid color-mix(in oklab, var(--stroke), transparent 10%);
-      background: color-mix(in oklab, var(--card), transparent 0%);
-      align-items:flex-start;
-    }
-
-    .dot{
-      width: 12px; height: 12px;
-      border-radius: 999px;
-      background: conic-gradient(from 240deg, var(--a2), var(--a1), var(--a4), var(--a2));
-      margin-top: 4px;
-      box-shadow: 0 10px 26px rgba(0,0,0,.25);
-      flex: 0 0 auto;
-    }
-
-    .step b{
-      display:block;
-      font-size: 13px;
-      margin-bottom: 4px;
-      letter-spacing:.01em;
-    }
-    .step p{
-      margin:0;
-      color: var(--muted);
-      font-size: 12px;
-      line-height:1.5;
-    }
-
-    .lead{
-      display:grid;
-      grid-template-columns: 1fr .9fr;
-      gap: 16px;
-      align-items: start;
-    }
-
-    .form{
-      display:flex; flex-direction:column; gap: 10px;
-    }
-
-    .fieldRow{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-    }
-
-    .field{
-      display:flex; flex-direction:column; gap: 6px;
-    }
-
-    .field label{
-      font-size: 12px;
-      color: var(--muted);
-      letter-spacing:.02em;
-    }
-
-    .control{
-      padding: 12px 12px;
-      border-radius: 14px;
-      border: 1px solid color-mix(in oklab, var(--stroke), transparent 10%);
-      background: color-mix(in oklab, var(--card), transparent 0%);
-      outline:none;
-      transition: border-color var(--t), background var(--t), transform var(--t);
-      color: var(--text);
-    }
-    .control:focus{
-      border-color: color-mix(in oklab, var(--a2), white 12%);
-      background: color-mix(in oklab, var(--card2), transparent 0%);
-      transform: translateY(-1px);
-    }
-    textarea.control{ resize: vertical; min-height: 118px; }
-
-    .formActions{
-      display:flex; gap: 10px; flex-wrap:wrap; align-items:center;
-      margin-top: 4px;
-    }
-
-    .hint{
-      color: var(--muted2);
-      font-size: 12px;
-      line-height:1.45;
-    }
-
-    .toast{
-      position:fixed;
-      left:50%;
-      bottom: 18px;
-      transform: translateX(-50%) translateY(20px);
-      opacity:0;
-      pointer-events:none;
-      transition: opacity var(--t), transform var(--t);
-      z-index: 80;
-      width: min(720px, calc(100vw - 28px));
-    }
-    .toastInner{
-      border-radius: 16px;
-      border: 1px solid color-mix(in oklab, var(--stroke), transparent 10%);
-      background: color-mix(in oklab, var(--bg1), transparent 0%);
-      box-shadow: var(--shadow2);
-      padding: 12px 12px;
-      display:flex; align-items:flex-start; justify-content:space-between;
-      gap: 12px;
-    }
-    .toast b{ font-size: 13px; display:block; margin-bottom: 2px; }
-    .toast p{ margin:0; color: var(--muted); font-size: 12px; line-height:1.45; }
-    .toast.show{ opacity:1; transform: translateX(-50%) translateY(0px); pointer-events:auto; }
-
-    .footer{
-      padding: 26px 0 40px;
-      color: var(--muted2);
-      font-size: 12px;
-      border-top: 1px solid color-mix(in oklab, var(--stroke), transparent 15%);
-      margin-top: 30px;
-    }
-    .footerGrid{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-      align-items:center;
-    }
-    .footer .right{
-      display:flex;
-      gap: 10px;
-      justify-content:flex-end;
-      flex-wrap:wrap;
-    }
-
-    .kbd{
-      font-family: var(--mono);
-      border: 1px solid color-mix(in oklab, var(--stroke), transparent 20%);
-      background: color-mix(in oklab, var(--card), transparent 0%);
-      padding: 3px 8px;
-      border-radius: 10px;
-      font-size: 11px;
-      color: var(--muted);
-    }
-
-    .reveal{
-      transform: translateY(12px);
-      opacity: 0;
-      transition: transform 600ms var(--ease), opacity 600ms var(--ease);
-    }
-    .reveal.in{
-      transform: translateY(0px);
-      opacity: 1;
-    }
-
-    @media (max-width: 980px){
-      .heroGrid{ grid-template-columns: 1fr; }
-      .systems{ grid-template-columns: 1fr; }
-      .lead{ grid-template-columns: 1fr; }
-      .links{ display:none; }
-      .brand{ min-width: unset; }
-      .actions{ min-width: unset; }
-      .grid3{ grid-template-columns: 1fr; }
-      .bento{ grid-template-columns: 1fr 1fr; }
-    }
-
-    @media (max-width: 640px){
-      .fieldRow{ grid-template-columns: 1fr; }
-      .bento{ grid-template-columns: 1fr; }
-      .footerGrid{ grid-template-columns: 1fr; }
-      .footer .right{ justify-content:flex-start; }
-      .pill{ padding: 10px 10px; }
-    }
-
-    @media (prefers-reduced-motion: reduce){
-      *{ scroll-behavior:auto !important; transition:none !important; animation:none !important; }
-      .reveal{ transform:none !important; opacity:1 !important; }
+    :root {
+      /* Core Palette - Premium Slate & Gold */
+      --bg-base: #08080a;
+      --bg-surface: #0e0e12;
+      --bg-elevated: #16161c;
+      
+      --text-main: #f0f0f5;
+      --text-muted: #9494a3;
+      --text-dim: #5c5c6b;
+      
+      --accent-primary: #d4af37; /* Muted Gold */
+      --accent-secondary: #3b82f6;
+      --accent-success: #10b981;
+      
+      --stroke-thin: rgba(255, 255, 255, 0.08);
+      --stroke-medium: rgba(255, 255, 255, 0.15);
+      
+      --shadow-sm: 0 2px 8px rgba(0,0,0,0.4);
+      --shadow-lg: 0 24px 64px rgba(0,0,0,0.6);
+      
+      /* Typography */
+      --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+      --font-serif: "Playfair Display", Georgia, serif;
+      --font-mono: "JetBrains Mono", "Fira Code", monospace;
+      
+      /* Motion */
+      --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+      --transition-fast: 200ms var(--ease-out);
+      --transition-med: 500ms var(--ease-out);
+      
+      --w-content: 1280px;
+      --radius-lg: 24px;
+      --radius-md: 12px;
+    }
+
+    [data-theme="light"] {
+      --bg-base: #f7f7f9;
+      --bg-surface: #ffffff;
+      --bg-elevated: #f0f0f4;
+      --text-main: #121217;
+      --text-muted: #525263;
+      --text-dim: #8a8a9e;
+      --stroke-thin: rgba(0, 0, 0, 0.06);
+      --stroke-medium: rgba(0, 0, 0, 0.12);
+      --shadow-lg: 0 24px 64px rgba(0,0,0,0.08);
+    }
+
+    * { box-sizing: border-box; -webkit-font-smoothing: antialiased; }
+    
+    body {
+      margin: 0;
+      font-family: var(--font-sans);
+      background: var(--bg-base);
+      color: var(--text-main);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* --- Scrollbar --- */
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: var(--bg-base); }
+    ::-webkit-scrollbar-thumb { background: var(--stroke-medium); border-radius: 4px; }
+
+    /* --- Layout Utilities --- */
+    .container { width: min(var(--w-content), 100% - 48px); margin: 0 auto; }
+    .grid { display: grid; gap: 24px; }
+    .flex { display: flex; gap: 16px; align-items: center; }
+    
+    /* --- Typography --- */
+    h1, h2, h3, h4 { font-family: var(--font-serif); font-weight: 500; margin: 0; line-height: 1.1; }
+    p { margin: 0; }
+    .mono { font-family: var(--font-mono); font-size: 0.85em; letter-spacing: 0.05em; text-transform: uppercase; }
+
+    /* --- Background Noise --- */
+    .grain {
+      position: fixed; inset: 0; z-index: 9999; pointer-events: none; opacity: 0.04;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    }
+
+    /* --- Components --- */
+    .btn {
+      appearance: none; border: 1px solid var(--stroke-medium); background: var(--bg-surface);
+      color: var(--text-main); padding: 12px 24px; border-radius: 99px; cursor: pointer;
+      font-weight: 500; transition: all var(--transition-fast); display: inline-flex;
+      align-items: center; gap: 8px; text-decoration: none; font-size: 14px;
+    }
+    .btn:hover { background: var(--bg-elevated); border-color: var(--text-muted); transform: translateY(-1px); }
+    .btn.primary { background: var(--text-main); color: var(--bg-base); border-color: var(--text-main); }
+    .btn.primary:hover { opacity: 0.9; }
+
+    .tag {
+      font-size: 10px; font-family: var(--font-mono); padding: 4px 10px;
+      border: 1px solid var(--stroke-thin); border-radius: 4px; color: var(--text-muted);
+      background: var(--bg-surface);
+    }
+
+    /* --- Header --- */
+    .nav-header {
+      position: sticky; top: 0; z-index: 100;
+      backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--stroke-thin); background: rgba(8, 8, 10, 0.7);
+    }
+    .nav-inner { height: 80px; display: flex; justify-content: space-between; align-items: center; }
+    .logo { font-family: var(--font-serif); font-size: 22px; color: var(--text-main); text-decoration: none; }
+    .nav-links { display: flex; gap: 32px; }
+    .nav-links a { text-decoration: none; color: var(--text-muted); font-size: 14px; transition: color var(--transition-fast); }
+    .nav-links a:hover { color: var(--text-main); }
+
+    /* --- Hero --- */
+    .hero { padding: 120px 0 80px; }
+    .hero-layout { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 64px; align-items: center; }
+    .hero-title { font-size: clamp(48px, 8vw, 96px); margin-bottom: 32px; }
+    .hero-desc { font-size: 20px; color: var(--text-muted); max-width: 500px; margin-bottom: 48px; }
+    .hero-stats { margin-top: 64px; display: flex; gap: 48px; }
+    .stat-item b { display: block; font-size: 32px; font-family: var(--font-serif); }
+    .stat-item span { color: var(--text-dim); font-size: 12px; text-transform: uppercase; }
+
+    /* --- Section Styling --- */
+    .section-pad { padding: 100px 0; border-top: 1px solid var(--stroke-thin); }
+    .section-label { color: var(--accent-primary); margin-bottom: 16px; display: block; }
+    .section-title { font-size: 48px; margin-bottom: 48px; max-width: 700px; }
+
+    /* --- Bento Grid --- */
+    .bento { grid-template-columns: repeat(12, 1fr); }
+    .card {
+      background: var(--bg-surface); border: 1px solid var(--stroke-thin);
+      border-radius: var(--radius-lg); padding: 40px; position: relative;
+      overflow: hidden; transition: border-color var(--transition-med);
+    }
+    .card:hover { border-color: var(--stroke-medium); }
+    .card-title { font-size: 24px; margin-bottom: 16px; }
+    .card-text { color: var(--text-muted); font-size: 15px; }
+
+    /* --- Specific Card Sizes --- */
+    .span-4 { grid-column: span 4; }
+    .span-6 { grid-column: span 6; }
+    .span-8 { grid-column: span 8; }
+    .span-12 { grid-column: span 12; }
+
+    /* --- Methodology (Deep Content) --- */
+    .method-step {
+      display: grid; grid-template-columns: 80px 1fr; gap: 32px;
+      padding: 48px 0; border-bottom: 1px solid var(--stroke-thin);
+    }
+    .method-num { font-family: var(--font-serif); font-size: 48px; opacity: 0.2; }
+    .method-content h3 { font-size: 28px; margin-bottom: 12px; }
+    .method-content p { color: var(--text-muted); max-width: 650px; }
+
+    /* --- Lead Vault --- */
+    .vault-grid { grid-template-columns: 1fr 350px; }
+    .vault-list { display: flex; flex-direction: column; gap: 12px; }
+    .lead-item {
+      padding: 24px; border-radius: var(--radius-md); background: var(--bg-surface);
+      border: 1px solid var(--stroke-thin); display: flex; justify-content: space-between;
+    }
+    .lead-info b { display: block; font-size: 16px; }
+    .lead-info span { font-size: 13px; color: var(--text-dim); }
+
+    /* --- Contact Form --- */
+    .form-group { display: flex; flex-direction: column; gap: 8px; margin-bottom: 24px; }
+    .form-group label { font-size: 12px; color: var(--text-muted); text-transform: uppercase; }
+    .input {
+      background: var(--bg-elevated); border: 1px solid var(--stroke-thin);
+      padding: 16px; border-radius: 8px; color: var(--text-main); font-family: inherit;
+      outline: none; transition: border-color var(--transition-fast);
+    }
+    .input:focus { border-color: var(--accent-primary); }
+    textarea.input { min-height: 150px; resize: vertical; }
+
+    /* --- Footer --- */
+    .footer { padding: 80px 0; background: var(--bg-surface); border-top: 1px solid var(--stroke-thin); }
+    .footer-grid { grid-template-columns: 2fr 1fr 1fr 1fr; }
+    .footer-col h4 { font-family: var(--font-sans); text-transform: uppercase; font-size: 12px; color: var(--text-dim); margin-bottom: 24px; }
+    .footer-links { display: flex; flex-direction: column; gap: 12px; }
+    .footer-links a { text-decoration: none; color: var(--text-muted); font-size: 14px; }
+
+    /* --- Command Palette --- */
+    #palette {
+      position: fixed; inset: 0; z-index: 1000; background: rgba(0,0,0,0.8);
+      display: none; align-items: flex-start; justify-content: center; padding-top: 15vh;
+    }
+    .palette-box {
+      width: min(600px, 95vw); background: var(--bg-surface); border-radius: 12px;
+      border: 1px solid var(--stroke-medium); box-shadow: var(--shadow-lg); overflow: hidden;
+    }
+    .palette-input {
+      width: 100%; border: none; background: transparent; padding: 20px; color: var(--text-main);
+      font-size: 18px; border-bottom: 1px solid var(--stroke-thin); outline: none;
+    }
+    .palette-results { max-height: 400px; overflow-y: auto; padding: 8px; }
+    .p-item {
+      padding: 12px 16px; border-radius: 6px; cursor: pointer; display: flex; justify-content: space-between;
+      align-items: center; color: var(--text-muted);
+    }
+    .p-item.active { background: var(--bg-elevated); color: var(--text-main); }
+    .p-key { font-family: var(--font-mono); font-size: 10px; background: var(--bg-surface); padding: 2px 6px; border-radius: 4px; }
+
+    /* --- Animations --- */
+    .reveal { opacity: 0; transform: translateY(30px); transition: all 800ms var(--ease-out); }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 900px) {
+      .hero-layout, .vault-grid, .footer-grid { grid-template-columns: 1fr; }
+      .span-4, .span-6, .span-8 { grid-column: span 12; }
+      .nav-links { display: none; }
     }
   </style>
 </head>
 
 <body>
-  <div class="noise" aria-hidden="true"></div>
+  <div class="grain"></div>
 
-  <header class="topbar">
-    <div class="wrap">
-      <nav class="nav" aria-label="Primary">
-        <a class="brand" href="#top" aria-label="Home">
-          <div class="mark" aria-hidden="true"></div>
-          <div>
-            <b>Studio</b>
-            <span>systems • product • growth</span>
-          </div>
-        </a>
-
-        <div class="links" role="navigation">
-            <a class="pill" href="./systems.html">Systems</a>
-            <a class="pill" href="./process.html">Process</a>
-            <a class="pill" href="./intelligence.html">Intelligence</a>
-            <a class="pill" href="./contact.html">Contact</a>
-          </div>
-
-        <div class="actions">
-          <button class="btn" id="themeBtn" type="button" aria-label="Toggle theme">
-            <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <path d="M12 18.5a6.5 6.5 0 1 0 0-13 6.5 6.5 0 0 0 0 13Z" stroke="currentColor" stroke-width="1.8"/>
-              <path d="M12 2v2.5M12 19.5V22M22 12h-2.5M4.5 12H2M19.8 4.2 18 6M6 18l-1.8 1.8M19.8 19.8 18 18M6 6 4.2 4.2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-            </svg>
-            Theme
-          </button>
-
-          <a class="btn primary" href="#contact">
-            <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-              <path d="M21 8v8a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3V8a3 3 0 0 1 3-3h12a3 3 0 0 1 3 3Z" stroke="currentColor" stroke-width="1.8"/>
-              <path d="m4 8 8 6 8-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-            Start a build
-          </a>
-        </div>
+  <header class="nav-header">
+    <div class="container nav-inner">
+      <a href="#" class="logo">Studio<span style="color:var(--accent-primary)">.</span></a>
+      <nav class="nav-links">
+        <a href="#vision">Vision</a>
+        <a href="#services">Architecture</a>
+        <a href="#method">Method</a>
+        <a href="#vault">Vault</a>
       </nav>
+      <div class="flex">
+        <button class="btn mono" id="theme-toggle">Theme</button>
+        <a href="#contact" class="btn primary">Inquire</a>
+      </div>
     </div>
   </header>
 
-  <main id="top" class="wrap">
-    <section class="hero">
-      <div class="heroGrid">
-        <div class="headline reveal">
-          <div class="headlineInner">
-            <div class="kicker">
-              <div class="badge">
-                <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                  <path d="M12 2 20 6v6c0 5-3.5 9.6-8 10-4.5-.4-8-5-8-10V6l8-4Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
-                  <path d="M9.2 12.2 11 14l3.8-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-                production-grade delivery
-              </div>
-              <div>
-                <span class="kbd">⌘</span>
-                <span class="kbd">K</span>
-              </div>
-            </div>
-
-            <h1 class="title">Design that sells.<br/>Engineering that scales.</h1>
-
-            <p class="subtitle">
-              A premium, modular website system built for real operations: performance budgets, accessible UI,
-              measurable conversion flows, and a lead pipeline that actually stores data.
-            </p>
-
-            <div class="heroCtas">
-              <button class="btn primary" id="openLead" type="button">
-                <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                  <path d="M12 3v18M3 12h18" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/>
-                </svg>
-                Capture a lead
-              </button>
-
-              <a class="btn" href="#systems">
-                <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                  <path d="M12 21c4.97 0 9-4.03 9-9s-4.03-9-9-9-9 4.03-9 9 4.03 9 9 9Z" stroke="currentColor" stroke-width="1.8"/>
-                  <path d="m10 8 6 4-6 4V8Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
-                </svg>
-                Explore systems
-              </a>
-
-              <a class="btn" href="#contact">
-                <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                  <path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Z" stroke="currentColor" stroke-width="1.8"/>
-                  <path d="m22 7-10 6L2 7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-                Contact
-              </a>
-            </div>
-
-            <div class="metaRow" aria-label="Highlights">
-              <div class="chip">perf budget: <span id="perfHint">pending</span></div>
-              <div class="chip">a11y: <span id="a11yHint">enabled</span></div>
-              <div class="chip">leads stored: <span id="leadCount">0</span></div>
-            </div>
+  <main>
+    <section class="hero container">
+      <div class="hero-layout">
+        <div class="reveal">
+          <span class="tag mono">Engineered by FileFlowCo</span>
+          <h1 class="hero-title">Digital architecture for the <em style="color:var(--accent-primary)">distinguished</em> web.</h1>
+          <p class="hero-desc">We build high-signal web systems that prioritize longevity, performance, and aesthetic discipline.</p>
+          <div class="flex">
+            <a href="#contact" class="btn primary">Start a project</a>
+            <button class="btn" onclick="openPalette()">Command Palette <span class="p-key">⌘K</span></button>
+          </div>
+          <div class="hero-stats">
+            <div class="stat-item"><b>99.9</b><span>Perf Budget</span></div>
+            <div class="stat-item"><b id="count-leads">0</b><span>Leads Stored</span></div>
+            <div class="stat-item"><b>12ms</b><span>Avg TTFB</span></div>
           </div>
         </div>
-
-        <aside class="side">
-          <div class="panel reveal" id="intelligence">
-            <div class="panelHeader">
-              <div>
-                <h3>Intelligence layer</h3>
-                <p>Track what matters locally now, and forward to a real endpoint when you set it.</p>
+        <div class="reveal" style="transition-delay: 200ms;">
+          <div class="card" style="padding:0; height: 500px; display:flex; align-items:center; justify-content:center; background: var(--bg-elevated);">
+            <div style="text-align:center;">
+              <div class="tag mono" style="margin-bottom:16px;">Core System V3.4</div>
+              <div style="font-family: var(--font-mono); font-size: 11px; opacity:0.4; line-height:2;">
+                SCANNING SUBSYSTEMS... [OK]<br>
+                LOAD BALANCING... [STABLE]<br>
+                AESTHETIC SYMMETRY... [OPTIMAL]<br>
+                LATENCY CHECK... [12ms]
               </div>
-              <div class="badge" id="endpointBadge" title="Lead endpoint status">endpoint: local</div>
-            </div>
-            <div class="panelBody">
-              <div class="bento" aria-label="Capabilities">
-                <div class="tile">
-                  <div class="spark"></div>
-                  <strong>Lead vault</strong>
-                  <span>Messages persisted in-device with export + optional POST forwarding.</span>
-                </div>
-                <div class="tile">
-                  <div class="spark" style="background: radial-gradient(circle at 30% 30%, color-mix(in oklab, var(--a4), transparent 25%) 0%, transparent 60%);"></div>
-                  <strong>Command palette</strong>
-                  <span>Fast navigation, theme, export, clear storage.</span>
-                </div>
-                <div class="tile">
-                  <div class="spark" style="background: radial-gradient(circle at 30% 30%, color-mix(in oklab, var(--a3), transparent 25%) 0%, transparent 60%);"></div>
-                  <strong>Motion system</strong>
-                  <span>Reveal animations with reduced-motion support.</span>
-                </div>
-                <div class="tile">
-                  <div class="spark" style="background: radial-gradient(circle at 30% 30%, color-mix(in oklab, var(--a1), transparent 25%) 0%, transparent 60%);"></div>
-                  <strong>Accessibility</strong>
-                  <span>Keyboard-first UI, aria labels, focus states.</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="panel reveal">
-            <div class="panelHeader">
-              <div>
-                <h3>What you sell</h3>
-                <p>Multiple premium options with distinct aesthetics and scalable structure.</p>
-              </div>
-              <div class="badge">systemized</div>
-            </div>
-            <div class="panelBody">
-              <div class="timeline" aria-label="Offering">
-                <div class="step">
-                  <div class="dot" aria-hidden="true"></div>
-                  <div>
-                    <b>Landing + conversion</b>
-                    <p>High-signal story, performance, and lead capture built-in.</p>
-                  </div>
-                </div>
-                <div class="step">
-                  <div class="dot" aria-hidden="true" style="background: conic-gradient(from 200deg, var(--a4), var(--a2), var(--a1), var(--a4));"></div>
-                  <div>
-                    <b>Services + case studies</b>
-                    <p>Structured pages that scale with content without redesign.</p>
-                  </div>
-                </div>
-                <div class="step">
-                  <div class="dot" aria-hidden="true" style="background: conic-gradient(from 200deg, var(--a3), var(--a2), var(--a5), var(--a3));"></div>
-                  <div>
-                    <b>Lead pipeline</b>
-                    <p>Real persistence + export now, forward later to your backend.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </aside>
-      </div>
-    </section>
-
-    <section id="systems" class="section">
-      <div class="sectionHeader reveal">
-        <div>
-          <h2>Systems, not pages</h2>
-          <p>Premium composition with reusable patterns: bento, stats, process, and data capture.</p>
-        </div>
-        <a class="pill" href="#contact" aria-label="Jump to contact">Start →</a>
-      </div>
-
-      <div class="systems">
-        <div class="stack">
-          <div class="card reveal">
-            <div class="cardPad">
-              <div class="grid3" aria-label="Stats">
-                <div class="stat">
-                  <div class="grad"></div>
-                  <b id="stat1">—</b>
-                  <i>Largest contentful paint hint (local estimate)</i>
-                </div>
-                <div class="stat">
-                  <div class="grad" style="background: radial-gradient(140px 90px at 30% 50%, color-mix(in oklab, var(--a2), transparent 52%) 0%, transparent 70%), radial-gradient(180px 100px at 75% 55%, color-mix(in oklab, var(--a3), transparent 62%) 0%, transparent 70%);"></div>
-                  <b id="stat2">—</b>
-                  <i>Time to interactive hint (local estimate)</i>
-                </div>
-                <div class="stat">
-                  <div class="grad" style="background: radial-gradient(140px 90px at 30% 50%, color-mix(in oklab, var(--a5), transparent 58%) 0%, transparent 70%), radial-gradient(180px 100px at 75% 55%, color-mix(in oklab, var(--a1), transparent 60%) 0%, transparent 70%);"></div>
-                  <b id="stat3">—</b>
-                  <i>Leads captured (persisted)</i>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="card reveal">
-            <div class="cardPad">
-              <div class="sectionHeader" style="margin:0 0 14px;">
-                <div>
-                  <h2 style="font-size:16px;margin:0;">Capability matrix</h2>
-                  <p style="margin-top:6px;">A clean selling surface with depth — without copying any of your existing directions.</p>
-                </div>
-              </div>
-
-              <div class="bento">
-                <div class="tile">
-                  <div class="spark"></div>
-                  <strong>Design language</strong>
-                  <span>Gradient mesh, bento composition, crisp typography, strong hierarchy.</span>
-                </div>
-                <div class="tile">
-                  <div class="spark" style="background: radial-gradient(circle at 30% 30%, color-mix(in oklab, var(--a3), transparent 20%) 0%, transparent 60%);"></div>
-                  <strong>Performance</strong>
-                  <span>Single-file build, no frameworks, progressive enhancement.</span>
-                </div>
-                <div class="tile">
-                  <div class="spark" style="background: radial-gradient(circle at 30% 30%, color-mix(in oklab, var(--a4), transparent 18%) 0%, transparent 60%);"></div>
-                  <strong>Conversion</strong>
-                  <span>Lead capture with validation, persistence, export, and forwarding.</span>
-                </div>
-                <div class="tile">
-                  <div class="spark" style="background: radial-gradient(circle at 30% 30%, color-mix(in oklab, var(--a5), transparent 18%) 0%, transparent 60%);"></div>
-                  <strong>Ops-ready</strong>
-                  <span>Command palette actions: export/clear, fast nav, theme toggle.</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="card reveal" id="process">
-          <div class="cardPad">
-            <div class="sectionHeader" style="margin:0 0 14px;">
-              <div>
-                <h2 style="font-size:16px;margin:0;">Delivery process</h2>
-                <p style="margin-top:6px;">Clear steps that clients understand and that you can repeat reliably.</p>
-              </div>
-            </div>
-
-            <div class="timeline" aria-label="Process steps">
-              <div class="step">
-                <div class="dot" aria-hidden="true"></div>
-                <div>
-                  <b>1) Scope + offer</b>
-                  <p>Define outcomes, pages, integrations, and timeline. Lock the brief.</p>
-                </div>
-              </div>
-              <div class="step">
-                <div class="dot" aria-hidden="true" style="background: conic-gradient(from 220deg, var(--a4), var(--a1), var(--a2), var(--a4));"></div>
-                <div>
-                  <b>2) Design system</b>
-                  <p>Typography, spacing, components, and motion — consistent, not random.</p>
-                </div>
-              </div>
-              <div class="step">
-                <div class="dot" aria-hidden="true" style="background: conic-gradient(from 220deg, var(--a3), var(--a2), var(--a1), var(--a3));"></div>
-                <div>
-                  <b>3) Build + QA</b>
-                  <p>Performance, accessibility, cross-browser, and content checks.</p>
-                </div>
-              </div>
-              <div class="step">
-                <div class="dot" aria-hidden="true" style="background: conic-gradient(from 220deg, var(--a5), var(--a1), var(--a4), var(--a5));"></div>
-                <div>
-                  <b>4) Launch + handoff</b>
-                  <p>Deploy, connect domain, analytics, and maintain a clean update path.</p>
-                </div>
-              </div>
-
-              <div style="margin-top:12px;">
-                <button class="btn" id="exportLeads" type="button">
-                  <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                    <path d="M12 3v10" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/>
-                    <path d="m8 9 4 4 4-4" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
-                    <path d="M5 17v2a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-2" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/>
-                  </svg>
-                  Export leads
-                </button>
-                <button class="btn" id="clearLeads" type="button">
-                  <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                    <path d="M4 7h16" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/>
-                    <path d="M10 11v7M14 11v7" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/>
-                    <path d="M9 7l1-2h4l1 2" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
-                    <path d="M6 7l1 14a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2l1-14" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
-                  </svg>
-                  Clear leads
-                </button>
-              </div>
-
-              <p class="hint" style="margin:12px 0 0;">
-                Stored on-device. When you set <span class="kbd">&lt;meta name="lead-endpoint"&gt;</span>, submissions will also POST there.
-              </p>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="contact" class="section">
-      <div class="sectionHeader reveal">
-        <div>
-          <h2>Capture a real lead</h2>
-          <p>This form writes to a local lead vault immediately and optionally forwards to your endpoint when you provide it.</p>
+    <section id="vision" class="section-pad container">
+      <div class="reveal">
+        <span class="section-label mono">Philosophy</span>
+        <h2 class="section-title">Minimalism is not the absence of content; it is the presence of clarity.</h2>
+        <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
+          <div class="card">
+            <h3 class="card-title">Intentional Design</h3>
+            <p class="card-text">Every pixel must justify its existence. We strip away the decorative noise to let your brand's core message resonate with absolute precision.</p>
+          </div>
+          <div class="card">
+            <h3 class="card-title">Sustainable Code</h3>
+            <p class="card-text">Frameworks come and go. We build on the "Evergreen Stack"—clean HTML, modular CSS, and purposeful JavaScript—ensuring your site remains fast for a decade, not a quarter.</p>
+          </div>
+          <div class="card">
+            <h3 class="card-title">Data Sovereignty</h3>
+            <p class="card-text">Your lead data shouldn't live in a dozen third-party trackers. Our systems prioritize local persistence and direct-to-database pipelines.</p>
+          </div>
         </div>
       </div>
+    </section>
 
-      <div class="lead">
-        <div class="card reveal">
-          <div class="cardPad">
-            <form class="form" id="leadForm" novalidate>
-              <div class="fieldRow">
-                <div class="field">
-                  <label for="name">Name</label>
-                  <input class="control" id="name" name="name" type="text" autocomplete="name" required minlength="2" />
+    <section id="services" class="section-pad container">
+      <div class="reveal">
+        <span class="section-label mono">Architecture</span>
+        <h2 class="section-title">Comprehensive digital engineering services.</h2>
+        <div class="grid bento">
+          <div class="card span-8">
+            <h3 class="card-title">Bespoke Web Ecosystems</h3>
+            <p class="card-text">From high-conversion landing pages to complex multi-step web applications, we engineer solutions that grow with your user base. We handle the dev-ops, the performance tuning, and the accessibility audits so you can focus on the business logic.</p>
+            <div class="flex" style="margin-top:24px;">
+              <span class="tag">Next.js</span> <span class="tag">Shopify Headless</span> <span class="tag">Custom API</span>
+            </div>
+          </div>
+          <div class="card span-4" style="background:var(--accent-primary); color:var(--bg-base);">
+            <h3 class="card-title" style="color:var(--bg-base)">Visual Strategy</h3>
+            <p style="opacity:0.8">Defining the aesthetic guardrails of your brand through typography, color theory, and motion guidelines.</p>
+          </div>
+          <div class="card span-6">
+            <h3 class="card-title">Lead Intelligence</h3>
+            <p class="card-text">Real-time tracking of user intent without compromising privacy. We build custom dashboards that visualize your growth pipeline.</p>
+          </div>
+          <div class="card span-6">
+            <h3 class="card-title">Performance Audits</h3>
+            <p class="card-text">Struggling with slow load times? We dissect your stack, optimize your assets, and guarantee sub-second interaction times.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="method" class="section-pad container">
+      <div class="reveal">
+        <span class="section-label mono">Process</span>
+        <h2 class="section-title">A disciplined approach to delivery.</h2>
+        
+        <div class="method-step">
+          <div class="method-num">01</div>
+          <div class="method-content">
+            <h3>Discovery & Extraction</h3>
+            <p>We begin by extracting the "core signal" of your project. Through deep-dive sessions, we identify technical constraints, user personas, and the specific KPIs that define success. We don't just ask what you want; we ask why it matters.</p>
+          </div>
+        </div>
+
+        <div class="method-step">
+          <div class="method-num">02</div>
+          <div class="method-content">
+            <h3>Structural Prototyping</h3>
+            <p>Before a single aesthetic choice is made, we architect the content. Using wire-systems, we map out the user journey to ensure the logic is flawless. This stage is about the skeleton—the weight-bearing walls of your digital experience.</p>
+          </div>
+        </div>
+
+        <div class="method-step">
+          <div class="method-num">03</div>
+          <div class="method-content">
+            <h3>Interface Engineering</h3>
+            <p>This is where "Premium" becomes tangible. We apply a disciplined design language, focusing on high-end typography and subtle interactive motion that guides the eye without being a distraction.</p>
+          </div>
+        </div>
+
+        <div class="method-step">
+          <div class="method-num">04</div>
+          <div class="method-content">
+            <h3>The Build (The Clean Room)</h3>
+            <p>Code is written with obsessive attention to detail. Every component is tested for performance, responsiveness, and accessibility (A11y). We follow a strict "No Bloat" policy—only the necessary bytes reach your users.</p>
+          </div>
+        </div>
+
+        <div class="method-step">
+          <div class="method-num">05</div>
+          <div class="method-content">
+            <h3>Quality Assurance & Launch</h3>
+            <p>We run a 50-point checklist covering SEO, cross-browser compatibility, and stress testing. Only when the system is airtight do we push to production. We handle the DNS and deployment pipelines for a seamless handoff.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="vault" class="section-pad container">
+      <div class="reveal">
+        <span class="section-label mono">Intelligence Layer</span>
+        <h2 class="section-title">The Lead Vault.</h2>
+        <div class="grid vault-grid">
+          <div class="card">
+            <div id="leads-display" class="vault-list">
+              <p class="card-text">No leads in the vault. Submit the form below to see the persistence engine in action.</p>
+            </div>
+            <div class="flex" style="margin-top:32px;">
+              <button class="btn mono" onclick="exportLeads()">Export JSON</button>
+              <button class="btn mono" onclick="clearLeads()" style="color:var(--accent-secondary)">Clear Vault</button>
+            </div>
+          </div>
+          <aside class="card" style="background:var(--bg-elevated)">
+            <h4 class="mono" style="font-size:11px; margin-bottom:16px;">System Logs</h4>
+            <div id="logs" style="font-family:var(--font-mono); font-size:10px; color:var(--text-dim); line-height:1.8;">
+              > Waiting for input...
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section-pad container">
+      <div class="reveal">
+        <div class="grid" style="grid-template-columns: 1fr 1fr; gap: 80px;">
+          <div>
+            <span class="section-label mono">Inquiry</span>
+            <h2 class="section-title">Let's build something enduring.</h2>
+            <p class="card-text" style="font-size:18px;">Currently accepting select projects for Q3 & Q4 2026. Briefly describe your vision, and we will respond within 24 hours with a preliminary brief.</p>
+            
+            <div style="margin-top:48px;">
+              <h4 class="mono" style="font-size:12px; margin-bottom:12px;">Contact details</h4>
+              <p>inquiry@fileflowco.com</p>
+              <p>+1 (555) 012-3456</p>
+            </div>
+          </div>
+          
+          <div class="card">
+            <form id="contact-form">
+              <div class="grid" style="grid-template-columns: 1fr 1fr;">
+                <div class="form-group">
+                  <label>Full Name</label>
+                  <input type="text" class="input" name="name" placeholder="John Doe" required>
                 </div>
-                <div class="field">
-                  <label for="email">Email</label>
-                  <input class="control" id="email" name="email" type="email" autocomplete="email" required />
+                <div class="form-group">
+                  <label>Email Address</label>
+                  <input type="email" class="input" name="email" placeholder="john@company.com" required>
                 </div>
               </div>
-
-              <div class="fieldRow">
-                <div class="field">
-                  <label for="company">Company</label>
-                  <input class="control" id="company" name="company" type="text" autocomplete="organization" />
-                </div>
-                <div class="field">
-                  <label for="budget">Budget (USD)</label>
-                  <input class="control" id="budget" name="budget" type="number" inputmode="numeric" min="0" step="100" placeholder="e.g. 5000" />
-                </div>
+              <div class="form-group">
+                <label>Company / Project Name</label>
+                <input type="text" class="input" name="company" placeholder="FileFlowCo">
               </div>
-
-              <div class="field">
-                <label for="message">Project brief</label>
-                <textarea class="control" id="message" name="message" required minlength="12" placeholder="Goals, pages, deadline, and any references you like."></textarea>
+              <div class="form-group">
+                <label>Message / Brief</label>
+                <textarea class="input" name="message" placeholder="Tell us about the mission..." required></textarea>
               </div>
-
-              <div class="formActions">
-                <button class="btn primary" type="submit" id="submitLead">
-                  <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                    <path d="M22 2 11 13" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/>
-                    <path d="M22 2 15 22l-4-9-9-4 20-7Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
-                  </svg>
-                  Submit
-                </button>
-
-                <button class="btn" type="button" id="openLeads">
-                  <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                    <path d="M4 5h16v14H4z" stroke="currentColor" stroke-width="1.8"/>
-                    <path d="M7 8h10M7 12h10M7 16h6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-                  </svg>
-                  View local leads
-                </button>
-              </div>
-
-              <p class="hint" id="submitHint">
-                If you want forwarding, set the endpoint meta tag to your real API URL later.
-              </p>
+              <button type="submit" class="btn primary" style="width:100%;">Submit Inquiry</button>
             </form>
           </div>
         </div>
-
-        <div class="card reveal">
-          <div class="cardPad">
-            <div class="sectionHeader" style="margin:0 0 10px;">
-              <div>
-                <h2 style="font-size:16px;margin:0;">Local lead vault</h2>
-                <p style="margin-top:6px;">This is live state — not demo text. Captures persist across refreshes.</p>
-              </div>
-            </div>
-
-            <div id="leadList" class="timeline" aria-live="polite" aria-label="Lead list"></div>
-
-            <div style="margin-top:12px; display:flex; gap:10px; flex-wrap:wrap;">
-              <button class="btn" type="button" id="copyLatest">
-                <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                  <path d="M9 9h10v10H9z" stroke="currentColor" stroke-width="1.8"/>
-                  <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-                </svg>
-                Copy latest
-              </button>
-              <button class="btn" type="button" id="downloadLatest">
-                <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                  <path d="M12 3v10" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/>
-                  <path d="m8 9 4 4 4-4" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>
-                  <path d="M5 17v2a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-2" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/>
-                </svg>
-                Download latest
-              </button>
-            </div>
-
-            <p class="hint" style="margin:12px 0 0;">
-              Shortcut: <span class="kbd">⌘K</span> opens commands.
-            </p>
-          </div>
-        </div>
       </div>
     </section>
-
-    <footer class="footer">
-      <div class="wrap footerGrid">
-        <div>
-          <div style="display:flex; align-items:center; gap:10px;">
-            <div class="mark" style="width:28px;height:28px;border-radius:10px;" aria-hidden="true"></div>
-            <div>
-              <div style="font-family:var(--mono); letter-spacing:.12em; text-transform:uppercase; font-size:11px;">Studio system</div>
-              <div style="color:var(--muted2); margin-top:2px;">Premium web direction • modular • scalable</div>
-            </div>
-          </div>
-        </div>
-        <div class="right">
-            <a class="pill" href="./index.html">Home</a>
-            <a class="pill" href="./systems.html">Systems</a>
-            <a class="pill" href="./contact.html">Contact</a>
-          </div>
-      </div>
-    </footer>
   </main>
 
-  <div class="toast" id="toast" role="status" aria-live="polite" aria-atomic="true">
-    <div class="toastInner">
-      <div>
-        <b id="toastTitle">Saved</b>
-        <p id="toastMsg">Lead saved to local vault.</p>
+  <footer class="footer">
+    <div class="container grid footer-grid">
+      <div class="footer-col">
+        <a href="#" class="logo" style="font-size:28px;">Studio.</a>
+        <p style="margin-top:24px; color:var(--text-dim); max-width:250px;">A FileFlowCo production. Engineered for those who value the intersection of performance and aesthetics.</p>
       </div>
-      <button class="btn" type="button" id="toastClose" aria-label="Close toast">Close</button>
+      <div class="footer-col">
+        <h4>Navigation</h4>
+        <div class="footer-links">
+          <a href="#vision">Philosophy</a>
+          <a href="#services">Services</a>
+          <a href="#method">Method</a>
+          <a href="#vault">Lead Vault</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Social</h4>
+        <div class="footer-links">
+          <a href="#">X / Twitter</a>
+          <a href="#">LinkedIn</a>
+          <a href="#">GitHub</a>
+          <a href="#">Dribbble</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Utility</h4>
+        <div class="footer-links">
+          <a href="#">Privacy</a>
+          <a href="#">Terms</a>
+          <a href="#" onclick="openPalette()">Command Palette</a>
+        </div>
+      </div>
+    </div>
+    <div class="container" style="margin-top:80px; padding-top:40px; border-top:1px solid var(--stroke-thin); color:var(--text-dim); font-size:12px; display:flex; justify-content:space-between;">
+      <span>© 2026 FileFlowCo Studio. All rights reserved.</span>
+      <span>Build: v3.4.0-release</span>
+    </div>
+  </footer>
+
+  <div id="palette" onclick="closePalette()">
+    <div class="palette-box" onclick="event.stopPropagation()">
+      <input type="text" id="p-input" class="palette-input" placeholder="Search commands..." autocomplete="off">
+      <div id="p-results" class="palette-results">
+        </div>
     </div>
   </div>
 
-  <!-- Command Palette (no framework) -->
-  <dialog id="cmdk" style="border:none; padding:0; background:transparent; max-width:min(760px, calc(100vw - 20px)); width:100%;">
-    <div style="
-      border-radius: 18px;
-      border: 1px solid color-mix(in oklab, var(--stroke), transparent 10%);
-      background: color-mix(in oklab, var(--bg1), transparent 0%);
-      box-shadow: var(--shadow);
-      overflow:hidden;">
-      <div style="padding: 12px 12px; border-bottom: 1px solid color-mix(in oklab, var(--stroke), transparent 15%); display:flex; gap:10px; align-items:center;">
-        <span class="kbd">⌘K</span>
-        <input id="cmdkInput" class="control" style="flex:1; border-radius: 14px; padding: 10px 12px;" placeholder="Type a command…" autocomplete="off" />
-        <button class="btn" id="cmdkClose" type="button">Close</button>
-      </div>
-
-      <div id="cmdkList" style="padding: 10px; display:flex; flex-direction:column; gap:8px;"></div>
-
-      <div style="padding: 10px 12px; border-top: 1px solid color-mix(in oklab, var(--stroke), transparent 15%); color: var(--muted2); font-size: 12px;">
-        <span class="kbd">Enter</span> run • <span class="kbd">Esc</span> close • <span class="kbd">↑</span><span class="kbd">↓</span> navigate
-      </div>
-    </div>
-  </dialog>
-
   <script>
-    (function(){
-      "use strict";
+    "use strict";
 
-      const $ = (sel, root=document) => root.querySelector(sel);
-      const $$ = (sel, root=document) => Array.from(root.querySelectorAll(sel));
+    // --- State & Storage ---
+    const STORAGE_KEY = "studio_leads_v3";
+    let leads = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
 
-      const STORAGE_KEY = "studio.leads.v1";
-      const THEME_KEY = "studio.theme.v1";
+    // --- Theme Logic ---
+    const themeBtn = document.getElementById('theme-toggle');
+    const toggleTheme = () => {
+      const current = document.documentElement.getAttribute('data-theme');
+      const next = current === 'light' ? 'dark' : 'light';
+      document.documentElement.setAttribute('data-theme', next);
+      log(`Switched to ${next} mode`);
+    };
+    themeBtn.addEventListener('click', toggleTheme);
 
-      const toast = $("#toast");
-      const toastTitle = $("#toastTitle");
-      const toastMsg = $("#toastMsg");
-      const toastClose = $("#toastClose");
+    // --- Lead Management ---
+    const form = document.getElementById('contact-form');
+    const leadCounter = document.getElementById('count-leads');
+    const display = document.getElementById('leads-display');
 
-      const leadCount = $("#leadCount");
-      const stat3 = $("#stat3");
+    const updateUI = () => {
+      leadCounter.innerText = leads.length;
+      if (leads.length === 0) {
+        display.innerHTML = '<p class="card-text">Vault empty.</p>';
+        return;
+      }
+      display.innerHTML = leads.map((l, i) => `
+        <div class="lead-item">
+          <div class="lead-info">
+            <b>${l.name}</b>
+            <span>${l.email} • ${l.company || 'Private'}</span>
+          </div>
+          <div class="tag mono" style="align-self:center">${new Date(l.date).toLocaleDateString()}</div>
+        </div>
+      `).join('');
+    };
 
-      const endpointMeta = document.querySelector('meta[name="lead-endpoint"]');
-      const endpoint = (endpointMeta?.content || "").trim();
-      const endpointBadge = $("#endpointBadge");
-      endpointBadge.textContent = endpoint ? "endpoint: live" : "endpoint: local";
-
-      const themeBtn = $("#themeBtn");
-      const prefersLight = window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").matches;
-
-      const getTheme = () => {
-        const saved = localStorage.getItem(THEME_KEY);
-        if(saved === "light" || saved === "dark") return saved;
-        return prefersLight ? "light" : "dark";
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const fd = new FormData(form);
+      const newLead = {
+        name: fd.get('name'),
+        email: fd.get('email'),
+        company: fd.get('company'),
+        message: fd.get('message'),
+        date: new Date().toISOString()
       };
-      const applyTheme = (t) => {
-        document.documentElement.setAttribute("data-theme", t);
-        localStorage.setItem(THEME_KEY, t);
-      };
-      applyTheme(getTheme());
+      leads.push(newLead);
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(leads));
+      form.reset();
+      updateUI();
+      log(`Lead captured: ${newLead.name}`);
+      alert("Inquiry successfully stored in the Vault.");
+    });
 
-      themeBtn.addEventListener("click", () => {
-        const cur = document.documentElement.getAttribute("data-theme") || "dark";
-        applyTheme(cur === "dark" ? "light" : "dark");
-        showToast("Theme updated", `Switched to ${document.documentElement.getAttribute("data-theme")}.`);
-      });
-
-      function safeJsonParse(s){
-        try{ return JSON.parse(s); }catch{ return null; }
-      }
-
-      function loadLeads(){
-        const raw = localStorage.getItem(STORAGE_KEY);
-        const parsed = raw ? safeJsonParse(raw) : null;
-        if(!Array.isArray(parsed)) return [];
-        return parsed.filter(x => x && typeof x === "object");
-      }
-
-      function saveLeads(list){
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(list));
-        updateCounters(list);
-        renderLeads(list);
-      }
-
-      function updateCounters(list){
-        const n = list.length;
-        leadCount.textContent = String(n);
-        stat3.textContent = String(n);
-      }
-
-      function fmtDate(iso){
-        const d = new Date(iso);
-        if(Number.isNaN(d.getTime())) return iso;
-        return d.toLocaleString(undefined, { year:"numeric", month:"short", day:"2-digit", hour:"2-digit", minute:"2-digit" });
-      }
-
-      function escapeHtml(s){
-        return String(s)
-          .replaceAll("&","&amp;")
-          .replaceAll("<","&lt;")
-          .replaceAll(">","&gt;")
-          .replaceAll('"',"&quot;")
-          .replaceAll("'","&#039;");
-      }
-
-      const leadList = $("#leadList");
-      function renderLeads(list){
-        leadList.innerHTML = "";
-        if(list.length === 0){
-          const empty = document.createElement("div");
-          empty.className = "step";
-          empty.innerHTML = '<div class="dot" aria-hidden="true"></div><div><b>No leads yet</b><p>Submit the form to store real data in the local vault.</p></div>';
-          leadList.appendChild(empty);
-          return;
-        }
-
-        const top = list.slice().reverse().slice(0, 5);
-        for(const item of top){
-          const node = document.createElement("div");
-          node.className = "step";
-          const title = escapeHtml(item.name || "Lead");
-          const email = escapeHtml(item.email || "");
-          const company = escapeHtml(item.company || "");
-          const budget = (item.budget != null && item.budget !== "") ? Number(item.budget) : null;
-          const budgetTxt = (budget != null && Number.isFinite(budget)) ? `$${budget.toLocaleString()}` : "—";
-          const msg = escapeHtml(item.message || "");
-          const when = escapeHtml(fmtDate(item.createdAt || new Date().toISOString()));
-          node.innerHTML = `
-            <div class="dot" aria-hidden="true"></div>
-            <div style="width:100%;">
-              <b style="display:flex;justify-content:space-between;gap:10px;align-items:baseline;">
-                <span>${title} <span style="color:var(--muted2); font-family:var(--mono); font-size:11px; letter-spacing:.06em;">${email}</span></span>
-                <span style="color:var(--muted2); font-family:var(--mono); font-size:11px;">${when}</span>
-              </b>
-              <p style="margin-top:6px;">
-                <span style="color:var(--muted);">Company:</span> ${company || "—"} &nbsp;•&nbsp;
-                <span style="color:var(--muted);">Budget:</span> ${budgetTxt}
-              </p>
-              <p style="margin-top:8px; color:var(--muted); white-space:pre-wrap;">${msg}</p>
-            </div>
-          `;
-          leadList.appendChild(node);
-        }
-      }
-
-      function showToast(title, message){
-        toastTitle.textContent = title;
-        toastMsg.textContent = message;
-        toast.classList.add("show");
-        window.clearTimeout(showToast._t);
-        showToast._t = window.setTimeout(() => toast.classList.remove("show"), 3800);
-      }
-      toastClose.addEventListener("click", () => toast.classList.remove("show"));
-
-      const openLead = $("#openLead");
-      const openLeads = $("#openLeads");
-      openLead.addEventListener("click", () => $("#contact").scrollIntoView({behavior:"smooth", block:"start"}));
-      openLeads.addEventListener("click", () => $("#contact").scrollIntoView({behavior:"smooth", block:"start"}));
-
-      const exportLeadsBtn = $("#exportLeads");
-      const clearLeadsBtn = $("#clearLeads");
-      const copyLatestBtn = $("#copyLatest");
-      const downloadLatestBtn = $("#downloadLatest");
-
-      function downloadJson(filename, obj){
-        const blob = new Blob([JSON.stringify(obj, null, 2)], {type:"application/json"});
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement("a");
-        a.href = url;
-        a.download = filename;
-        document.body.appendChild(a);
-        a.click();
-        a.remove();
-        setTimeout(() => URL.revokeObjectURL(url), 1000);
-      }
-
-      function getLatest(list){
-        if(list.length === 0) return null;
-        return list[list.length - 1];
-      }
-
-      exportLeadsBtn.addEventListener("click", () => {
-        const leads = loadLeads();
-        downloadJson(`leads_${new Date().toISOString().slice(0,10)}.json`, leads);
-        showToast("Exported", "Leads downloaded as JSON.");
-      });
-
-      clearLeadsBtn.addEventListener("click", () => {
+    const clearLeads = () => {
+      if(confirm("Wipe all local lead data?")) {
+        leads = [];
         localStorage.removeItem(STORAGE_KEY);
-        saveLeads([]);
-        showToast("Cleared", "Local lead vault cleared.");
-      });
-
-      copyLatestBtn.addEventListener("click", async () => {
-        const leads = loadLeads();
-        const latest = getLatest(leads);
-        if(!latest){
-          showToast("Nothing to copy", "No leads yet.");
-          return;
-        }
-        const text = JSON.stringify(latest, null, 2);
-        try{
-          await navigator.clipboard.writeText(text);
-          showToast("Copied", "Latest lead copied to clipboard.");
-        }catch{
-          showToast("Copy failed", "Clipboard permission blocked.");
-        }
-      });
-
-      downloadLatestBtn.addEventListener("click", () => {
-        const leads = loadLeads();
-        const latest = getLatest(leads);
-        if(!latest){
-          showToast("Nothing to download", "No leads yet.");
-          return;
-        }
-        downloadJson(`lead_${(latest.email || "unknown").replaceAll(/[^a-z0-9_\-\.]/gi,"_")}.json`, latest);
-        showToast("Downloaded", "Latest lead downloaded.");
-      });
-
-      // Reveal animation
-      const reveal = $$(".reveal");
-      const io = new IntersectionObserver((entries) => {
-        for(const e of entries){
-          if(e.isIntersecting) e.target.classList.add("in");
-        }
-      }, {threshold: 0.12});
-      reveal.forEach(el => io.observe(el));
-
-      // Performance hints (local)
-      const perfHint = $("#perfHint");
-      const stat1 = $("#stat1");
-      const stat2 = $("#stat2");
-
-      let lcpValue = null;
-      let ttiStart = performance.now();
-
-      // LCP observer (best-effort)
-      try{
-        const po = new PerformanceObserver((list) => {
-          const entries = list.getEntries();
-          const last = entries[entries.length - 1];
-          if(last){
-            lcpValue = last.startTime;
-            const ms = Math.round(lcpValue);
-            perfHint.textContent = `${ms}ms`;
-            stat1.textContent = `${ms}ms`;
-          }
-        });
-        po.observe({type:"largest-contentful-paint", buffered:true});
-      }catch{
-        perfHint.textContent = "n/a";
+        updateUI();
+        log("Vault cleared");
       }
+    };
 
-      window.addEventListener("load", () => {
-        const tti = Math.round(performance.now() - ttiStart);
-        stat2.textContent = `${tti}ms`;
-        if(!lcpValue) stat1.textContent = "—";
-        if(perfHint.textContent === "pending") perfHint.textContent = "ok";
-      });
+    const exportLeads = () => {
+      const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(leads));
+      const downloadAnchorNode = document.createElement('a');
+      downloadAnchorNode.setAttribute("href", dataStr);
+      downloadAnchorNode.setAttribute("download", "studio_leads.json");
+      document.body.appendChild(downloadAnchorNode);
+      downloadAnchorNode.click();
+      downloadAnchorNode.remove();
+      log("Exporting leads...");
+    };
 
-      // Lead submit flow (real persistence + optional forward)
-      const form = $("#leadForm");
-      const submitHint = $("#submitHint");
-      const submitBtn = $("#submitLead");
+    // --- System Logs ---
+    const logEl = document.getElementById('logs');
+    const log = (msg) => {
+      const time = new Date().toLocaleTimeString();
+      logEl.innerHTML = `> ${time}: ${msg}<br>` + logEl.innerHTML;
+    };
 
-      function validateEmail(v){
-        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(v || "").trim());
+    // --- Command Palette ---
+    const palette = document.getElementById('palette');
+    const pInput = document.getElementById('p-input');
+    const pResults = document.getElementById('p-results');
+    
+    const commands = [
+      { name: "Toggle Theme", key: "T", action: toggleTheme },
+      { name: "Go to Vault", key: "V", action: () => location.hash = "#vault" },
+      { name: "Export Data", key: "E", action: exportLeads },
+      { name: "Clear Leads", key: "C", action: clearLeads },
+      { name: "Contact Studio", key: "K", action: () => location.hash = "#contact" }
+    ];
+
+    const openPalette = () => {
+      palette.style.display = 'flex';
+      pInput.focus();
+      renderCommands("");
+    };
+
+    const closePalette = () => { palette.style.display = 'none'; };
+
+    const renderCommands = (filter) => {
+      const filtered = commands.filter(c => c.name.toLowerCase().includes(filter.toLowerCase()));
+      pResults.innerHTML = filtered.map(c => `
+        <div class="p-item" onclick="executeCmd('${c.name}')">
+          <span>${c.name}</span>
+          <span class="p-key">${c.key}</span>
+        </div>
+      `).join('');
+    };
+
+    const executeCmd = (name) => {
+      const cmd = commands.find(c => c.name === name);
+      if(cmd) {
+        cmd.action();
+        closePalette();
       }
+    };
 
-      function readForm(){
-        const fd = new FormData(form);
-        const data = {
-          id: crypto.randomUUID(),
-          createdAt: new Date().toISOString(),
-          name: String(fd.get("name") || "").trim(),
-          email: String(fd.get("email") || "").trim(),
-          company: String(fd.get("company") || "").trim(),
-          budget: String(fd.get("budget") || "").trim(),
-          message: String(fd.get("message") || "").trim(),
-          userAgent: navigator.userAgent,
-          page: location.href
-        };
-        return data;
-      }
+    pInput.addEventListener('input', (e) => renderCommands(e.target.value));
 
-      function validateLead(data){
-        if(!data.name || data.name.length < 2) return "Name is required.";
-        if(!data.email || !validateEmail(data.email)) return "Valid email is required.";
-        if(!data.message || data.message.length < 12) return "Project brief must be at least 12 characters.";
-        if(data.budget){
-          const n = Number(data.budget);
-          if(!Number.isFinite(n) || n < 0) return "Budget must be a valid number.";
-        }
-        return null;
-      }
-
-      async function forwardLeadIfConfigured(data){
-        if(!endpoint) return { forwarded:false, ok:true, status:"local-only" };
-
-        try{
-          const res = await fetch(endpoint, {
-            method: "POST",
-            headers: {"Content-Type":"application/json"},
-            body: JSON.stringify(data)
-          });
-          if(!res.ok) return { forwarded:true, ok:false, status:`http-${res.status}` };
-          return { forwarded:true, ok:true, status:"ok" };
-        }catch{
-          return { forwarded:true, ok:false, status:"network-failed" };
-        }
-      }
-
-      form.addEventListener("submit", async (e) => {
+    window.addEventListener('keydown', (e) => {
+      if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
         e.preventDefault();
-
-        const lead = readForm();
-        const err = validateLead(lead);
-        if(err){
-          showToast("Fix required", err);
-          return;
-        }
-
-        submitBtn.disabled = true;
-        submitBtn.style.opacity = ".85";
-        submitHint.textContent = "Saving…";
-
-        const leads = loadLeads();
-        leads.push(lead);
-        saveLeads(leads);
-
-        const result = await forwardLeadIfConfigured(lead);
-
-        form.reset();
-        submitBtn.disabled = false;
-        submitBtn.style.opacity = "1";
-
-        if(result.forwarded && !result.ok){
-          submitHint.textContent = "Saved locally. Forward failed (endpoint not reachable).";
-          showToast("Saved locally", "Forwarding failed. Local lead vault is intact.");
-          return;
-        }
-
-        if(result.forwarded && result.ok){
-          submitHint.textContent = "Saved locally and forwarded successfully.";
-          showToast("Submitted", "Lead saved and forwarded.");
-          return;
-        }
-
-        submitHint.textContent = "Saved locally. Set endpoint meta tag later to forward to your backend.";
-        showToast("Saved", "Lead saved to local vault.");
-      });
-
-      // Initial render
-      const initial = loadLeads();
-      updateCounters(initial);
-      renderLeads(initial);
-
-      // Command palette
-      const cmdk = $("#cmdk");
-      const cmdkInput = $("#cmdkInput");
-      const cmdkList = $("#cmdkList");
-      const cmdkClose = $("#cmdkClose");
-
-      const commands = [
-        { id:"go-top", label:"Go: Top", hint:"Scroll to top", run:() => $("#top").scrollIntoView({behavior:"smooth"}) },
-        { id:"go-systems", label:"Go: Systems", hint:"Scroll to systems", run:() => $("#systems").scrollIntoView({behavior:"smooth"}) },
-        { id:"go-contact", label:"Go: Contact", hint:"Scroll to contact", run:() => $("#contact").scrollIntoView({behavior:"smooth"}) },
-        { id:"theme", label:"Toggle: Theme", hint:"Switch light/dark", run:() => themeBtn.click() },
-        { id:"export", label:"Data: Export leads", hint:"Download JSON", run:() => exportLeadsBtn.click() },
-        { id:"clear", label:"Data: Clear leads", hint:"Remove local vault", run:() => clearLeadsBtn.click() },
-        { id:"copy-latest", label:"Data: Copy latest lead", hint:"Clipboard", run:() => copyLatestBtn.click() },
-        { id:"download-latest", label:"Data: Download latest lead", hint:"Single JSON", run:() => downloadLatestBtn.click() },
-      ];
-
-      let activeIndex = 0;
-      let filtered = commands;
-
-      function renderCmds(){
-        cmdkList.innerHTML = "";
-        if(filtered.length === 0){
-          const div = document.createElement("div");
-          div.className = "step";
-          div.innerHTML = '<div class="dot" aria-hidden="true"></div><div><b>No results</b><p>Try a different query.</p></div>';
-          cmdkList.appendChild(div);
-          return;
-        }
-
-        filtered.forEach((c, idx) => {
-          const btn = document.createElement("button");
-          btn.type = "button";
-          btn.className = "step";
-          btn.style.cursor = "pointer";
-          btn.style.textAlign = "left";
-          btn.setAttribute("data-idx", String(idx));
-          btn.innerHTML = `
-            <div class="dot" aria-hidden="true" style="${idx===activeIndex ? "filter:saturate(1.2); transform: scale(1.1);" : ""}"></div>
-            <div style="width:100%;">
-              <b>${escapeHtml(c.label)}</b>
-              <p>${escapeHtml(c.hint || "")}</p>
-            </div>
-          `;
-          btn.addEventListener("click", () => runCmd(idx));
-          cmdkList.appendChild(btn);
-        });
+        openPalette();
       }
+      if (e.key === 'Escape') closePalette();
+    });
 
-      function openCmdk(){
-        if(typeof cmdk.showModal === "function"){
-          cmdk.showModal();
-          cmdkInput.value = "";
-          filtered = commands;
-          activeIndex = 0;
-          renderCmds();
-          setTimeout(() => cmdkInput.focus(), 0);
-        }
-      }
-
-      function closeCmdk(){
-        if(cmdk.open) cmdk.close();
-      }
-
-      function runCmd(idx){
-        const c = filtered[idx];
-        if(!c) return;
-        closeCmdk();
-        setTimeout(() => c.run(), 0);
-      }
-
-      cmdkClose.addEventListener("click", closeCmdk);
-      cmdk.addEventListener("click", (e) => {
-        // click outside closes
-        const r = cmdk.getBoundingClientRect();
-        if(e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom){
-          closeCmdk();
-        }
+    // --- Reveal Animation ---
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
       });
+    }, { threshold: 0.1 });
 
-      cmdkInput.addEventListener("input", () => {
-        const q = cmdkInput.value.trim().toLowerCase();
-        filtered = !q ? commands : commands.filter(c =>
-          c.label.toLowerCase().includes(q) ||
-          (c.hint || "").toLowerCase().includes(q) ||
-          c.id.toLowerCase().includes(q)
-        );
-        activeIndex = 0;
-        renderCmds();
-      });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-      cmdkInput.addEventListener("keydown", (e) => {
-        if(e.key === "Escape"){ e.preventDefault(); closeCmdk(); return; }
-        if(e.key === "ArrowDown"){ e.preventDefault(); activeIndex = Math.min(activeIndex + 1, Math.max(filtered.length - 1, 0)); renderCmds(); return; }
-        if(e.key === "ArrowUp"){ e.preventDefault(); activeIndex = Math.max(activeIndex - 1, 0); renderCmds(); return; }
-        if(e.key === "Enter"){ e.preventDefault(); runCmd(activeIndex); return; }
-      });
-
-      document.addEventListener("keydown", (e) => {
-        const isMac = /Mac|iPhone|iPad|iPod/.test(navigator.platform);
-        const mod = isMac ? e.metaKey : e.ctrlKey;
-        if(mod && e.key.toLowerCase() === "k"){
-          e.preventDefault();
-          openCmdk();
-        }
-        if(e.key === "Escape" && cmdk.open){
-          e.preventDefault();
-          closeCmdk();
-        }
-      });
-
-      // Endpoint status hint
-      if(endpoint){
-        endpointBadge.textContent = "endpoint: live";
-        endpointBadge.style.borderColor = "color-mix(in oklab, var(--a3), white 10%)";
-        submitHint.textContent = "Forwarding is enabled (endpoint configured).";
-      }else{
-        endpointBadge.textContent = "endpoint: local";
-      }
-
-    })();
+    // --- Init ---
+    updateUI();
+    log("System initialized");
   </script>
 </body>
 </html>
